@@ -20,10 +20,10 @@ const Platforms = ({platforms}) => {
 
     return (
         <>
+            <Head>
+                <title>List Platforms</title>
+            </Head>
             <Layout>
-                <Head>
-                    <title>List Platforms</title>
-                </Head>
                 <div className="container">
                     <h1>List Platforms</h1>
                     {

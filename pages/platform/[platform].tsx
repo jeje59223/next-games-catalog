@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button"
 import Layout from "../../components/layout";
 import axios from "axios";
 import Link from "next/link";
+import Head from "next/head";
 
 const Platform = ({platform, games}) => {
     const router = useRouter();
@@ -24,13 +25,17 @@ const Platform = ({platform, games}) => {
     }
     
     return (
+        <>
+        <Head>
+            <title>{platform.name}</title>
+        </Head>
         <Layout>
             <div className="container mt-5">
-                <Card className="text-center">
-                    <Card.Header style={styles.titre}>{platform.name}</Card.Header>
+                <Card >
+                    <Card.Header className="text-center" style={styles.titre}>{platform.name}</Card.Header>
                         <Card.Body>
                         <div className="row">
-                            <div className="col-4">
+                            <div className="col-4 text-center">
                                 <img style={styles.logo} src={platform.platform_logo.url} />
                             </div>
                             <div className="col-8">
@@ -44,7 +49,7 @@ const Platform = ({platform, games}) => {
                             </div>
                         </div>
                         </Card.Body>
-                    <Card.Footer className="text-muted"><a href={platform.url}>{platform.url}</a></Card.Footer>
+                    <Card.Footer className="text-muted text-center"><a target="blanck" href={platform.url}>{platform.url}</a></Card.Footer>
                 </Card>
                 <div className="text-center mt-5">
                     <h2>Les jeux pour la {platform.name}</h2>
@@ -54,7 +59,9 @@ const Platform = ({platform, games}) => {
                                 return (
                                 <div key={game.cover.url} className="m-2">
                                     <Link href="/game/[game]" as={`/game/${game.slug}`}>
-                                        <img src={game.cover.url} />
+                                        <a>
+                                            <img src={game.cover.url} />
+                                        </a>
                                     </Link>
                                 </div>
                                 )
@@ -64,7 +71,8 @@ const Platform = ({platform, games}) => {
                 </div>
             </div>
         </Layout>
-        )
+        </>
+    )
 }
 
 export async function getServerSideProps (context) {
