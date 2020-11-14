@@ -3,13 +3,16 @@ import Head from "next/head";
 import Layout  from "../components/layout";
 
 export default function Home() {
+
+  
+
   return (
     <>
       <Head>
         <title>Accueil Games-Catalog</title>
       </Head>
       <Layout>
-        <div className="container">
+        <div className="container accueil">
           <h1>Accueil Games-Catalog</h1>
         </div>
       </Layout>

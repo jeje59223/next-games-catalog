@@ -4,6 +4,10 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    background-image: url("https://c.pxhere.com/photos/50/db/buttons_console_dark_design_electronics_equipment_game_nes-1559417.jpg!d");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 a {
@@ -14,3 +18,4 @@ a {
 * {
   box-sizing: border-box;
 }
+

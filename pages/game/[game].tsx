@@ -20,7 +20,6 @@ const Game = ({data}) => {
     const genres = data.genres;
     const platforms = data.platforms
     const screenshots = data.screenshots;
-    console.log("logo : " + data.platforms[0].platform_logo.url)
     
     return (
         <Layout>
@@ -33,9 +32,9 @@ const Game = ({data}) => {
                             </div>
                             <div className="col-2">
                                 {
-                                    platforms.map(logo => {
+                                    platforms.map((logo, index) => {
                                         return (
-                                            <img className="mr-2" src={logo.platform_logo.url} style={styles.logo}/>
+                                            <img key={index} className="mr-2" src={logo.platform_logo.url} style={styles.logo}/>
                                         )
                                     })
                                 }
@@ -71,37 +70,23 @@ const Game = ({data}) => {
                 </div>
                 {
                 data.screenshots ? 
-                <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
-                    <ol className="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-                    <div className="carousel-inner">
+                <Carousel>
                         {
-                            screenshots.map((screen,index) => {
+                            screenshots.map(screen => {
                                 return (
-                                    index === 0 ? 
-                                    <div className="carousel-item active">
-                                        <img src={screen.url} className="d-block w-100" alt="..." />
-                                    </div>
-                                    :
-                                    <div className="carousel-item">
-                                        <img src={screen.url} className="d-block w-100" alt="..." />
-                                    </div>
+                                <Carousel.Item key={screen.url}>
+                                    <img
+                                    className="d-block w-100"
+                                    src={screen.url}
+                                    alt="First slide"
+                                    />
+                                    <Carousel.Caption>
+                                    </Carousel.Caption>
+                                </Carousel.Item>
                                 )
                             })
                         }
-                    </div>
-                    <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span className="sr-only">Previous</span>
-                    </a>
-                    <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span className="sr-only">Next</span>
-                    </a>
-                </div>
+                </Carousel>
                 : null }
             </div>
         </Layout>
