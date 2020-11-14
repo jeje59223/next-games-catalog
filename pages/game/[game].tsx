@@ -16,7 +16,7 @@ const styles = {
 }
 
 const Game = ({data}) => {
-    console.log(data);
+    // console.log(data);
     // console.log(data.genres[0].name);
     const genres = data.genres;
     const platforms = data.platforms

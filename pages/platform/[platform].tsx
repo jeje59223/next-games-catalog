@@ -85,12 +85,12 @@ const Platform = ({platform, games}) => {
 export async function getServerSideProps (context) {
     const mongodb = await getDatabase();
     const gamesPlatform = context.params.platform;
-    console.log("platform : " + context.params.platform);
+    // console.log("platform : " + context.params.platform);
 
 
     const platform = await mongodb.db().collection("platforms").findOne({slug: gamesPlatform});
     const games = await mongodb.db().collection("games").find({"platforms.slug": gamesPlatform}).toArray();
-    console.log("LES JEUX : "+ JSON.stringify(games))
+    // console.log("LES JEUX : "+ JSON.stringify(games))
     
     return {
         props: {
