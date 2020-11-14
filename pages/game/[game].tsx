@@ -24,10 +24,13 @@ const Game = ({data}) => {
     
     return (
         <>
-            <Head>
+        {
+            data && (
+                <>
+                <Head>
                 <title>{data.name}</title>
-            </Head>
-            <Layout>
+                </Head>
+                <Layout>
                 <div className="container">
                     <div className="card mt-5">
                         <div className="card-header text-center" style={styles.titre}>
@@ -98,6 +101,10 @@ const Game = ({data}) => {
         </>
     )
 }
+                </>
+            )
+        }
+            
 
 export async function getServerSideProps(context) {
     const slug = context.params.game;

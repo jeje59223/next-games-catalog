@@ -20,6 +20,7 @@ const Platforms = ({platforms}) => {
 
     return (
         <>
+        
             <Head>
                 <title>List Platforms</title>
             </Head>

@@ -26,54 +26,61 @@ const Platform = ({platform, games}) => {
     
     return (
         <>
-        <Head>
-            <title>{platform.name}</title>
-        </Head>
-        <Layout>
-            <div className="container mt-5">
-                <Card >
-                    <Card.Header className="text-center" style={styles.titre}>{platform.name}</Card.Header>
-                        <Card.Body>
-                        <div className="row">
-                            <div className="col-4 text-center">
-                                <img style={styles.logo} src={platform.platform_logo.url} />
-                            </div>
-                            <div className="col-8">
-                                <Card.Title></Card.Title>
-                                <Card.Text>
-                                {platform.summary}
-                                </Card.Text>
-                                <p className="text-success">{platform.connectivity}</p>
-                                <p className="text-success">{platform.cpu}</p>
-                                <p className="text-success">{platform.media}</p>
-                            </div>
-                        </div>
-                        </Card.Body>
-                    <Card.Footer className="text-muted text-center"><a target="blanck" href={platform.url}>{platform.url}</a></Card.Footer>
-                </Card>
-                <div className="text-center mt-5">
-                    <h2>Les jeux pour la {platform.name}</h2>
-                    <div className="d-flex flex-wrap justify-content-center">
-                        {
-                            games.map(game => {
-                                return (
-                                <div key={game.cover.url} className="m-2">
-                                    <Link href="/game/[game]" as={`/game/${game.slug}`}>
-                                        <a>
-                                            <img src={game.cover.url} />
-                                        </a>
-                                    </Link>
+        {
+            platform && (
+                <>
+                <Head>
+                    <title>{platform.name}</title>
+                </Head>
+                        <Layout>
+                            <div className="container mt-5">
+                                <Card >
+                                    <Card.Header className="text-center" style={styles.titre}>{platform.name}</Card.Header>
+                                        <Card.Body>
+                                        <div className="row">
+                                            <div className="col-4 text-center">
+                                                <img style={styles.logo} src={platform.platform_logo.url} />
+                                            </div>
+                                            <div className="col-8">
+                                                <Card.Title></Card.Title>
+                                                <Card.Text>
+                                                {platform.summary}
+                                                </Card.Text>
+                                                <p className="text-success">{platform.connectivity}</p>
+                                                <p className="text-success">{platform.cpu}</p>
+                                                <p className="text-success">{platform.media}</p>
+                                            </div>
+                                        </div>
+                                        </Card.Body>
+                                    <Card.Footer className="text-muted text-center"><a target="blanck" href={platform.url}>{platform.url}</a></Card.Footer>
+                                </Card>
+                                <div className="text-center mt-5">
+                                    <h2>Les jeux pour la {platform.name}</h2>
+                                    <div className="d-flex flex-wrap justify-content-center">
+                                        {
+                                            games.map(game => {
+                                                return (
+                                                <div key={game.cover.url} className="m-2">
+                                                    <Link href="/game/[game]" as={`/game/${game.slug}`}>
+                                                        <a>
+                                                            <img src={game.cover.url} />
+                                                        </a>
+                                                    </Link>
+                                                </div>
+                                                )
+                                            })
+                                        }
+                                    </div>
                                 </div>
-                                )
-                            })
-                        }
-                    </div>
-                </div>
-            </div>
-        </Layout>
-        </>
-    )
-}
+                            </div>
+                        </Layout>
+                        </>
+                    )
+                }
+                </>
+            )
+        }
+        
 
 export async function getServerSideProps (context) {
     const mongodb = await getDatabase();
