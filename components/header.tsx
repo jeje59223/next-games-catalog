@@ -33,7 +33,7 @@ export const Header = () => {
                 <ul className="navbar-nav mr-auto">
                     <Link href="/" passHref >
                         <a className="nav-item">
-                            <li className="nav-link " style={router.pathname === "/" ? styles.active : styles.link}>Accueil</li>
+                            <li className="nav-link " style={router.pathname === "/" ? styles.active : styles.link}>Home</li>
                         </a>
                     </Link>
                     <Link href="/platforms" passHref>
