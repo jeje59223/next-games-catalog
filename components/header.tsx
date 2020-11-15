@@ -19,7 +19,7 @@ export const Header = () => {
     }
     
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
             <Link href="/">
                 <a>
                     <img src="https://img.icons8.com/fluent/48/000000/super-mario.png"/>
@@ -44,6 +44,11 @@ export const Header = () => {
                     <Link href="/games" passHref>
                         <a className="nav-item">
                             <li className="nav-link" style={router.pathname === "/games" ? styles.active : styles.link}>Games</li>
+                        </a>
+                    </Link>
+                    <Link href="/admin" passHref>
+                        <a className="nav-item">
+                            <li className="nav-link" style={router.pathname === "/admin" ? styles.active : styles.link}>Admin</li>
                         </a>
                     </Link>
                 </ul>

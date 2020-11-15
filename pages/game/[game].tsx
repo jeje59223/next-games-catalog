@@ -5,6 +5,7 @@ import Layout from "../../components/layout";
 import Head from "next/head";
 import Carousel from 'react-bootstrap/Carousel';
 import ProgressBar from "react-bootstrap/ProgressBar";
+import context from "react-bootstrap/esm/AccordionContext";
 
 
 const styles = {
@@ -22,7 +23,9 @@ const Game = ({data}) => {
     const genres = data.genres;
     const platforms = data.platforms
     const screenshots = data.screenshots;
-    const progressInstance = data.total_rating.toFixed(2);
+    let progressInstance = null;
+    data.total_rating ?
+    progressInstance = data.total_rating.toFixed(2) : progressInstance = null;
     
     return (
         <>
@@ -33,7 +36,7 @@ const Game = ({data}) => {
                 <title>{data.name}</title>
                 </Head>
                 <Layout>
-                <div className="container">
+                <div className="container mt-5">
                     <div className="card mt-5">
                         <div className="card-header text-center" style={styles.titre}>
                                     {data.name}
@@ -54,9 +57,11 @@ const Game = ({data}) => {
                                     }
                                     <h6 className="mt-4">Total rating :</h6>
                                     {
-
-                                     <ProgressBar now={progressInstance} label={`${progressInstance}%`} className="stripped" />
+                                        data.total_rating ?
+                                        <ProgressBar now={progressInstance} label={`${progressInstance}%`} className="stripped" />
+                                        : <p className="text-warning">There is no rating for this game</p>
                                     }
+                                         
                                     <h6 className="mt-4">Genres :</h6>
                                     {
                                         genres.map((genre, index) => {

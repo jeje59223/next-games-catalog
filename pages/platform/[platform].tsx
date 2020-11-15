@@ -1,19 +1,13 @@
 import React from "react-bootstrap";
-import Platforms from "../platforms";
 import {useRouter} from "next/router";
 import { getDatabase } from "../../src/database";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button"
 import Layout from "../../components/layout";
-import axios from "axios";
 import Link from "next/link";
 import Head from "next/head";
 
 const Platform = ({platform, games}) => {
     const router = useRouter();
-    console.log(platform);
-    // console.log(games);
-    
 
     const styles = {
         logo: {
