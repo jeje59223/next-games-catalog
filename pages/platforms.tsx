@@ -35,10 +35,10 @@ const Platforms = ({platforms}) => {
                                             <div className="card-header text-center bg-primary" style={styles.titre}>{platform.name}</div>
                                             <div className="card-body">
                                                 <div className="row">
-                                                    <div className="col-4 text-center ">
-                                                            <img src={platform.platform_logo.url} style={styles.image}/>  
+                                                    <div className="col col-md-4 text-center ">
+                                                        <img src={platform.platform_logo.url} style={styles.image}/>  
                                                     </div>
-                                                    <div className="col-8 p-3">
+                                                    <div className="col col-lg-8 p-3">
                                                         <h4  className="card-title">{platform.name}</h4>
                                                         <p className="card-text">{platform.summary}</p>
                                                     </div>

@@ -4,6 +4,7 @@ import axios from "axios";
 import Layout from "../../components/layout";
 import Head from "next/head";
 import Carousel from 'react-bootstrap/Carousel';
+import ProgressBar from "react-bootstrap/ProgressBar";
 
 
 const styles = {
@@ -21,6 +22,7 @@ const Game = ({data}) => {
     const genres = data.genres;
     const platforms = data.platforms
     const screenshots = data.screenshots;
+    const progressInstance = data.total_rating.toFixed(2);
     
     return (
         <>
@@ -34,45 +36,37 @@ const Game = ({data}) => {
                 <div className="container">
                     <div className="card mt-5">
                         <div className="card-header text-center" style={styles.titre}>
-                            <div className="row">
-                                <div className="col-10">
                                     {data.name}
-                                </div>
-                                <div className="col-2">
-                                    {
-                                        platforms.map((logo, index) => {
-                                            return (
-                                                <img key={index} className="mr-2" src={logo.platform_logo.url} style={styles.logo}/>
-                                            )
-                                        })
-                                    }
-                                </div>
-                            </div>
                         </div>
                         <div>
                             <div className="card-body row">
-                                <div className="col-4 text-center">
-                                    <img src={data.cover.url} />
+                                <div className="col col-md-4 text-center d-flex">
+                                    <img className="align-self-center" src={data.cover.url} />
                                 </div>
-                                <div className="col-8">
-                                    <h5 className="card-title">{data.name}
+                                <div className="col col-md-8">
+                                    <h6>Available on :</h6>
                                     {
                                         platforms.map((platform, index) => {
                                             return (
-                                                <span key={index} className="badge badge-primary m-3">{platform.name}</span>
+                                                <span key={index} className="badge badge-primary mr-3 mt-2">{platform.name}<img key={index} className="ml-2" src={platform.platform_logo.url} style={styles.logo}/></span>
                                             )
                                         })
                                     }
-                                    </h5>
-                                    <p className="card-text">{data.summary}</p>
+                                    <h6 className="mt-4">Total rating :</h6>
+                                    {
+
+                                     <ProgressBar now={progressInstance} label={`${progressInstance}%`} className="stripped" />
+                                    }
+                                    <h6 className="mt-4">Genres :</h6>
                                     {
                                         genres.map((genre, index) => {
                                             return (
                                             <span key={index} className="badge badge-primary mr-2">{genre.name}</span>
                                             )
                                         })
-                                    }                                  
-                                </div>
+                                    }
+                                 </div>   
+                                    <p className="card-text m-3">{data.summary}</p>
                             </div>
                         </div>
                     </div>

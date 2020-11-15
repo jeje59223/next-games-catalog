@@ -38,10 +38,10 @@ const Platform = ({platform, games}) => {
                                     <Card.Header className="text-center" style={styles.titre}>{platform.name}</Card.Header>
                                         <Card.Body>
                                         <div className="row">
-                                            <div className="col-4 text-center">
+                                            <div className="col col-md-4 text-center">
                                                 <img style={styles.logo} src={platform.platform_logo.url} />
                                             </div>
-                                            <div className="col-8">
+                                            <div className="col col-md-8">
                                                 <Card.Title></Card.Title>
                                                 <Card.Text>
                                                 {platform.summary}
