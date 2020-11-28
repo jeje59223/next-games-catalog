@@ -20,3 +20,26 @@ a {
   box-sizing: border-box;
 }
 
+.custom-paginate {
+  display: flex;
+  list-style: none;
+  height: 40px;
+  border: 1px solid #BDBDBD;
+  border-radius: 5px;
+  width: fit-content;
+  align-items: center;
+  padding: 0;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 10px;
+}
+.paginate {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 10px;
+  cursor: pointer;
+}
+.paginateCenter{
+  text-align: -webkit-center;
+}

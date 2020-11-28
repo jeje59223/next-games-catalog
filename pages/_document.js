@@ -6,6 +6,7 @@ class MyDocument extends Document {
             <Html>
                 <Head>
                 <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css" />
+                <link rel="icon" type="image/png" href="icons.png" />
                 </Head>
                 <body>
                     <Main />
