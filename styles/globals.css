@@ -24,14 +24,16 @@ a {
   display: flex;
   list-style: none;
   height: 40px;
-  border: 1px solid #BDBDBD;
+  /* border: 1px solid #BDBDBD; */
   border-radius: 5px;
   width: fit-content;
   align-items: center;
   padding: 0;
-  margin-top: 40px;
+  margin-top: 0px;
   margin-bottom: 40px;
-  padding: 10px;
+  /* padding: 10px; */
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .paginate {
   display: flex;
@@ -42,4 +44,8 @@ a {
 }
 .paginateCenter{
   text-align: -webkit-center;
+}
+
+i {
+  color: white;
 }

@@ -3,18 +3,10 @@ import Head from "next/head";
 import Layout from "../components/layout";
 import { getDatabase } from "../src/database";
 import { Table } from "react-bootstrap";
-// import { Pagination } from "react-bootstrap";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import {
-  MDBPagination,
-  MDBPageItem,
-  MDBPageNav,
-  MDBCol,
-  MDBRow,
-} from "mdbreact";
 import ReactPaginate from "react-paginate";
-// import PaginationPage from "../components/pagination";
+import SearchBarSection from "../components/searchBar";
 
 const Admin = ({ platforms, currentPage, pageCount, platformsGames }) => {
   const router = useRouter();
@@ -47,7 +39,8 @@ const Admin = ({ platforms, currentPage, pageCount, platformsGames }) => {
       <Layout>
         <div className="container">
           <h1>Your Administrator Area</h1>
-          <Table striped bordered hover variant="dark" className="mt-5">
+          <SearchBarSection />
+          <Table striped bordered hover variant="dark" className="mt-2">
             <thead>
               <tr className="text-center">
                 <th></th>
@@ -101,11 +94,11 @@ const Admin = ({ platforms, currentPage, pageCount, platformsGames }) => {
                 onPageChange={paginationHandler}
                 initialPage={currentPage - 1}
                 pageCount={pageCount}
-                marginPagesDisplayed={2}
+                marginPagesDisplayed={1}
                 pageRangeDisplayed={5}
                 previousLabel="Precedent"
                 nextLabel="Suivant"
-                activeClassName="activated"
+                activeClassName="activated bg-white p-3 m-1 text-dark font-weight-bold"
                 breakLabel="..."
                 pageClassName="paginate"
                 containerClassName="custom-paginate bg-primary"
@@ -131,16 +124,18 @@ const Admin = ({ platforms, currentPage, pageCount, platformsGames }) => {
 
 export async function getServerSideProps(context) {
   const mongodb = await getDatabase();
+  const searchwithRegex = context.query.search;
   const page = context.query.page || 1;
   const nPerPage = 5  ;
 
   const platformsGames = await mongodb
     .db()
     .collection("platforms")
-    .find()
+    .find({ name: new RegExp(searchwithRegex, "i") })
     .skip(page > 0 ? (page - 1) * nPerPage : 0)
     .limit(nPerPage)
     .toArray();
+    
 
   const platforms = await mongodb.db().collection("platforms").find().toArray();
 
