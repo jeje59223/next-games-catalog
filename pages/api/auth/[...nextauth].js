@@ -50,7 +50,7 @@ const options = {
     },
 
     redirect: async (url, baseUrl) => {
-      return Promise.resolve("https://next-games-catalog-owas6uv7t.vercel.app");
+      return Promise.resolve("https://next-games-catalog-owas6uv7t.vercel.app/api/auth/callback/google");
     },
   },
   
